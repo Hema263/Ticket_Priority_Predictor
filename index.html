@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Management System - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .home-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .home-container h2 {
+            color: #1e293b;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .portal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .portal-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        
+        .portal-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .portal-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .portal-icon {
+            font-size: 4.5em;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: transform 0.4s;
+        }
+        
+        .portal-card:hover .portal-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .portal-card h2 {
+            color: #1e293b;
+            margin-bottom: 18px;
+            font-size: 1.9em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .portal-card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        
+        @media (max-width: 768px) {
+            .home-container h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            
+            .portal-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .portal-card {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎫 Ticket Management System</h1>
+            <p class="subtitle">MNC Network Support Portal</p>
+        </header>
+
+        <div class="home-container">
+            <h2 style="color: white; font-size: 2em; margin-bottom: 20px;">Choose Your Portal</h2>
+            
+            <div class="portal-cards">
+                <a href="user.html" class="portal-card">
+                    <div class="portal-icon">👤</div>
+                    <h2>User Portal</h2>
+                    <p>Raise a new ticket to report your problem. The system will automatically classify the priority and send it to the Network Engineer.</p>
+                </a>
+                
+                <a href="engineer.html" class="portal-card">
+                    <div class="portal-icon">👨‍💼</div>
+                    <h2>Network Engineer Portal</h2>
+                    <p>View all tickets, acknowledge them, and manage ticket status. See unacknowledged tickets that need your attention.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

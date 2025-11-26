@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Engineer Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👨‍💼 Network Engineer Portal</h1>
+            <p class="subtitle">View and Acknowledge Tickets</p>
+            <div class="nav-buttons">
+                <a href="user.html" class="nav-btn">User Portal</a>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-card high">
+                <span class="stat-label">High Priority</span>
+                <span class="stat-value" id="stat-high">0</span>
+            </div>
+            <div class="stat-card medium">
+                <span class="stat-label">Medium Priority</span>
+                <span class="stat-value" id="stat-medium">0</span>
+            </div>
+            <div class="stat-card low">
+                <span class="stat-label">Low Priority</span>
+                <span class="stat-value" id="stat-low">0</span>
+            </div>
+            <div class="stat-card unacknowledged">
+                <span class="stat-label">Unacknowledged</span>
+                <span class="stat-value" id="stat-unack">0</span>
+            </div>
+            <div class="stat-card total">
+                <span class="stat-label">Total Tickets</span>
+                <span class="stat-value" id="stat-total">0</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="tickets-section full-width">
+                <div class="filter-bar">
+                    <h2>All Tickets</h2>
+                    <div class="engineer-info">
+                        <label for="engineerName">Engineer Name:</label>
+                        <input type="text" id="engineerName" value="Network Engineer" placeholder="Enter your name">
+                    </div>
+                    <div class="filters">
+                        <button class="filter-btn active" data-priority="all" data-ack="all">All</button>
+                        <button class="filter-btn" data-priority="High" data-ack="all">High</button>
+                        <button class="filter-btn" data-priority="Medium" data-ack="all">Medium</button>
+                        <button class="filter-btn" data-priority="Low" data-ack="all">Low</button>
+                        <button class="filter-btn" data-priority="all" data-ack="unacknowledged">Unacknowledged</button>
+                        <button class="filter-btn" data-priority="all" data-ack="acknowledged">Acknowledged</button>
+                        <button class="filter-btn" data-status="Open">Open</button>
+                        <button class="filter-btn" data-status="In Progress">In Progress</button>
+                        <button class="filter-btn" data-status="Closed">Closed</button>
+                    </div>
+                </div>
+                
+                <div id="ticketsList" class="tickets-list">
+                    <!-- Tickets will be loaded here -->
+                </div>
+                
+                <div class="technical-criteria" id="technicalCriteria">
+                    <button class="criteria-toggle-btn" onclick="toggleCriteria()">
+                        <span>🔧 View Technical Classification Criteria</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div class="criteria-content">
+                    <div class="criteria-section">
+                        <div class="criteria-item high-criteria">
+                            <h4>HIGH PRIORITY - Urgent Problems</h4>
+                            <p class="criteria-desc">System detects critical issues that prevent functionality:</p>
+                            <div class="criteria-details">
+                                <strong>System Status Issues:</strong>
+                                <span class="criteria-tags">not working, not accessible, cannot access, unable to, down, offline, unavailable, broken, crash, error, failed, stopped, outage, disconnected, no connection</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Service Downtime:</strong>
+                                <span class="criteria-tags">server down, network down, system down, service down, website down, application down, database down, production down</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Critical Language:</strong>
+                                <span class="criteria-tags">urgent, critical, emergency, immediate, asap, blocking, severe, major, serious</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Security Issues:</strong>
+                                <span class="criteria-tags">security breach, hacked, compromised, data loss, data breach, unauthorized access, malware, virus, attack</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Working Issue Patterns:</strong>
+                                <span class="criteria-tags">cannot, unable, not able, doesn't work, won't work, not responding, not loading, not opening, not starting</span>
+                            </div>
+                        </div>
+                        
+                        <div class="criteria-item medium-criteria">
+                            <h4>MEDIUM PRIORITY - Performance Issues</h4>
+                            <p class="criteria-desc">System detects performance degradation or speed issues:</p>
+                            <div class="criteria-details">
+                                <strong>Speed/Performance Indicators:</strong>
+                                <span class="criteria-tags">slow, slower, slowing, lag, lagging, delayed, delay, degraded, degradation, poor performance, performance issue</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Time-related Issues:</strong>
+                                <span class="criteria-tags">taking time, timeout, time out, hanging, freezing, intermittent, sometimes, occasionally, unstable</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Optimization Requests:</strong>
+                                <span class="criteria-tags">optimization, optimize, improve performance, speed up, bottleneck, congestion</span>
+                            </div>
+                        </div>
+                        
+                        <div class="criteria-item low-criteria">
+                            <h4>LOW PRIORITY - Information Requests</h4>
+                            <p class="criteria-desc">System detects questions, inquiries, or non-urgent requests:</p>
+                            <div class="criteria-details">
+                                <strong>Question Indicators:</strong>
+                                <span class="criteria-tags">question, questions, ask, asking, inquiry, inquiries, information, info, want to know, wondering, curious</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Question Patterns:</strong>
+                                <span class="criteria-tags">how to, how do, what is, what are, explain, explanation, clarification, clarify, understand, understanding</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>General Requests:</strong>
+                                <span class="criteria-tags">general, general question, just asking, for information, feature request, suggestion, idea, enhancement</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Non-Urgent Language:</strong>
+                                <span class="criteria-tags">non-urgent, when possible, whenever, nice to have, cosmetic, minor, small, low priority</span>
+                            </div>
+                            <div class="criteria-details">
+                                <strong>Question Word Detection:</strong>
+                                <span class="criteria-tags">If 2+ question words (?, why, what, how, when, where, which, who) detected → Low Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="criteria-note">
+                        <strong>Classification Algorithm:</strong> The system analyzes the entire problem description (title + description) using pattern matching and context analysis. Priority is assigned based on problem nature, not just keywords. If no clear indicators match, the ticket defaults to <strong>Medium Priority</strong>.
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="engineer-script.js"></script>
+</body>
+</html>
+
